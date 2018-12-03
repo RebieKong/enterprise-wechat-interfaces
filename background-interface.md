@@ -117,7 +117,7 @@
 ```
  [返回顶部](#接口清单)
  
-#### 删除用户信息接口
+#### 删除用户接口
 * PATH: `/admin/user/{user_id}`
 * METHOD: `DELETE`
 * 请求体
@@ -225,7 +225,7 @@
 ```
  [返回顶部](#接口清单)
  
-#### 删除用户信息接口
+#### 删除组织接口
 * PATH: `/admin/organization/{organization_id}`
 * METHOD: `DELETE`
 * 请求体
@@ -307,7 +307,7 @@
 ```
  [返回顶部](#接口清单)
  
-#### 删除渠道信息接口
+#### 删除渠道接口
 * PATH: `/admin/channel/{channel_id}`
 * METHOD: `DELETE`
 * 请求体
@@ -321,4 +321,3 @@
 {}
 ```
  [返回顶部](#接口清单)
- 
