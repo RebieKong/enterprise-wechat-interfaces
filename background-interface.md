@@ -12,6 +12,7 @@
   - [新增组织接口](#新增组织接口)
   - [修改组织接口](#修改组织接口)
 - 渠道管理接口
+  - [获取渠道接口](#获取渠道接口)
   - [增加渠道接口](#增加渠道接口)
   - [修改渠道接口](#修改渠道接口)
 	
@@ -200,6 +201,73 @@
 |organization_id| 组织ID | path | `True` |||
 |organization_name| 组织名 | body | `False` |||
 |parent_organization_id| 上级组织ID | body | `False` |||
+
+* 返回体data域
+```json
+{}
+```
+ [返回顶部](#接口清单)
+ 
+ ### 渠道接口
+ 
+#### 获取渠道接口
+* PATH: `/admin/channel`
+* METHOD: `GET`
+* 请求体
+
+| 参数 | 参数名 |参数域| 是否必选 | 默认值 | 备注 | 
+| ----- | ----- | ----- | ----- | ----- | ----- |
+
+* 返回体data域
+```json
+{
+  "items": [
+    {
+      "channel_id": 1,
+      "channel_name": "默认渠道",
+      "channel_properties": "{}"
+    }
+  ],
+  "pagination": {
+    "current_page": 1,
+    "item_size": 10,
+    "total_size": 1000,
+    "pages_size": 100
+  }
+}
+```
+ [返回顶部](#接口清单)
+ 
+#### 增加渠道接口
+* PATH: `/admin/channel/add`
+* METHOD: `POST`
+* 请求体
+
+| 参数 | 参数名 |参数域| 是否必选 | 默认值 | 备注 | 
+| ----- | ----- | ----- | ----- | ----- | ----- |
+|channel_name| 渠道名 | body | `True` |||
+|type| 渠道类型 | body | `True` |||
+|properties| 配置项 | body | `True` || json编码的KV结构|
+
+* 返回体data域
+```json
+{
+    "channel_id":1
+}
+```
+ [返回顶部](#接口清单)
+ 
+#### 修改渠道接口
+* PATH: `/admin/channel/{channel_id}`
+* METHOD: `PUT`
+* 请求体
+
+| 参数 | 参数名 |参数域| 是否必选 | 默认值 | 备注 | 
+| ----- | ----- | ----- | ----- | ----- | ----- |
+|channel_id| 渠道ID | path | `True` |||
+|channel_name| 渠道名 | body | `False` |||
+|type| 渠道类型 | body | `False` |||
+|properties| 配置项 | body | `False` || json编码的KV结构|
 
 * 返回体data域
 ```json
