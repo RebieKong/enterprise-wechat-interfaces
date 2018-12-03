@@ -2,9 +2,13 @@
 
 ### 接口清单
 - 用户管理接口
+  - 获取单个用户信息接口
+  - 获取用户信息接口
   - 新增用户接口
   - 修改用户信息接口
-  - 获取用户信息接口
+- 组织管理接口
+  - 获取单个组织信息接口
+  - 获取组织信息接口
   - 新增组织接口
   - 修改组织接口
 - 渠道管理接口
@@ -84,7 +88,9 @@
 
 * 返回体data域
 ```json
-{}
+{
+    "user_id":1
+}
 ```
  [返回顶部](#接口清单)
  
@@ -100,6 +106,100 @@
 |worker_id| 工号 | body | `False` |||
 |phone| 手机号码 | body | `False` |||
 |organization_id| 组织ID | body | `False` |||
+
+* 返回体data域
+```json
+{}
+```
+ [返回顶部](#接口清单)
+ 
+
+### 组织管理接口 
+
+#### 获取单个组织信息接口
+* PATH: `/admin/organization/{organization_id}`
+* METHOD: `GET`
+* 请求体
+
+| 参数 | 参数名 |参数域| 是否必选 | 默认值 | 备注 | 
+| ----- | ----- | ----- | ----- | ----- | ----- |
+|organization_id| 组织ID | path | `True` |||
+
+* 返回体data域
+```json
+{
+  "info": {
+    "organization_id": 123,
+    "organization_name": "李",
+    "parent_organization_id": "1",
+    "children_organization_ids": [
+      3,
+      4,
+      5
+    ]
+  }
+}
+```
+ [返回顶部](#接口清单)
+ 
+#### 获取组织信息接口
+* PATH: `/admin/organization`
+* METHOD: `GET`
+* 请求体
+
+| 参数 | 参数名 |参数域| 是否必选 | 默认值 | 备注 | 
+| ----- | ----- | ----- | ----- | ----- | ----- |
+
+* 返回体data域
+```json
+{
+  "root": {
+    "children_organizations": [
+      {
+        "organization_id": 123,
+        "organization_name": "李",
+        "children_organization": [
+          {
+            "organization_id": 123,
+            "organization_name": "李",
+            "children_organization": []
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+ [返回顶部](#接口清单)
+ 
+#### 新增组织接口
+* PATH: `/admin/organization/add`
+* METHOD: `POST`
+* 请求体
+
+| 参数 | 参数名 |参数域| 是否必选 | 默认值 | 备注 | 
+| ----- | ----- | ----- | ----- | ----- | ----- |
+|organization_name| 组织名 | body | `True` |||
+|parent_organization_id| 上级组织ID | body | `True` |||
+
+* 返回体data域
+```json
+{
+    "organization_id":1
+}
+```
+ [返回顶部](#接口清单)
+ 
+#### 修改组织信息接口
+* PATH: `/admin/organization/{organization_id}`
+* METHOD: `PUT`
+* 请求体
+
+| 参数 | 参数名 |参数域| 是否必选 | 默认值 | 备注 | 
+| ----- | ----- | ----- | ----- | ----- | ----- |
+|organization_id| 组织ID | path | `True` |||
+|organization_name| 组织名 | body | `False` |||
+|parent_organization_id| 上级组织ID | body | `False` |||
 
 * 返回体data域
 ```json
