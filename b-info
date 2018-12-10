@@ -1,0 +1,49 @@
+## H5接口
+
+### 接口清单
+- 商情接口
+    - [上传商情接口](#上传商情接口)
+    - [列出商情接口](#列出商情接口)
+	
+===============================
+
+### 工单接口
+#### 列表接口
+* PATH: `/active-job`
+* METHOD: `GET`
+* 请求体
+
+| 参数 | 参数名 |参数域| 是否必选 | 默认值 | 备注 | 
+| ----- | ----- | ----- | ----- | ----- | ----- |
+|search| 搜索内容 | query | `False` |`null`||
+|order-status| 工单状态 | query | `False` |0||
+|contact-status| 客户意愿 | query  | `False` |0||
+|page| 页码 | query  | `False` | 1 ||
+|page-size| 分页 | query  | `False` | 10 ||
+
+* 返回体data域
+```json
+{
+  "items": [
+    {
+      "order_id": "1234567",
+      "activity_name": "宽进融",
+      "status": 1,
+      "order_create_time": "2018-01-01 00:00:00",
+      "lastest_contact": {
+        "contact_time": "2018-01-01 00:00:00",
+        "status": 1,
+        "status_reason": "",
+        "status_remark": ""
+      }
+    }
+  ],
+  "pagination": {
+    "current_page": 1,
+    "item_size": 10,
+    "total_size": 1000,
+    "pages_size": 100
+  }
+}
+```
+ [返回顶部](#接口清单)
